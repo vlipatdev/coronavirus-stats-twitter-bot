@@ -23,7 +23,7 @@ const postTweet = () => {
 			} = response.data;
 
 			const date = new Date(updated);
-			const options = {
+			const dateOptions = {
 				month: 'long',
 				day: 'numeric',
 				year: 'numeric',
@@ -34,7 +34,7 @@ const postTweet = () => {
 
 			// format date
 			const formatDate = (date) => {
-				return date.toLocaleString('en-US', options);
+				return date.toLocaleString('en-US', dateOptions);
 			};
 
 			// add commas
@@ -55,12 +55,10 @@ const postTweet = () => {
 
 			// post tweet
 			T.post(
-				'statuses/update',
-				{
+				'statuses/update', {
 					// tweet content
 					status: tweetContent,
-				},
-				(err, data, response) => {
+				}, (err, data, response) => {
 					console.log(data);
 				}
 			);
